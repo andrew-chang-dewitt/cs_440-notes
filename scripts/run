@@ -1,0 +1,11 @@
+#/user/bin/env bash
+
+SCRIPT_DIR=`dirname $(realpath "$0")`
+cd $SCRIPT_DIR/..
+
+filename="$@"
+cmd="markdown-code-runner $filename"
+
+echo "watching $filename for changes...\n\n"
+entr $cmd <<< $filename
+echo "\n\n...stopping watching"
